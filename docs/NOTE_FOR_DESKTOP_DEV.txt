@@ -1,0 +1,18 @@
+Merhaba,
+
+Mobil uygulamada 3-Parmaklı Kaydırma Gestures'ı mevcuttur.
+Masaüstü yazılımında, WebSocket üzerinden gelecek olan 3 Parmak kaydırma hamleleri aşağıdaki şemayla gelecektir:
+{
+  "t": "SWIPE_3",
+  "dir": "UP" | "DOWN" | "LEFT" | "RIGHT"
+}
+
+UYARI:
+Gelen bu "dir" (yön) bilgisine göre masaüstünde tetiklemen gereken işlemler şu şekildedir:
+- "dir": "RIGHT" (3 parmak sağa kaydırıldı) -> Hedef Eylem: Soldaki ekrana/sanal masaüstüne geçiş yap.
+- "dir": "LEFT" (3 parmak sola kaydırıldı)  -> Hedef Eylem: Bir sağdaki ekrana/sanal masaüstüne geçiş yap.
+- "dir": "UP"    (3 parmak yukarı kaydırıldı)-> Hedef Eylem: Masaüstü önizleme / Task View ekranını aç.
+
+(Windows'da örneğin sağdaki masaüstüne geçmek için Ctrl+Win+Sağ Yön Tuşu, Task View için Win+Tab kullanılır.)
+
+PROTOCOL.md içeriğindeki 3 Parmak eylemleri kısmı da geliştirilmiştir.
