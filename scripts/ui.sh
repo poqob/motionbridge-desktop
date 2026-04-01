@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo java javafx:run 
+cd "$(dirname "$0")/.." && mvn javafx:run 
