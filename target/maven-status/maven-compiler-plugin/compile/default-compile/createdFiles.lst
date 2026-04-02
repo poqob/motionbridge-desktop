@@ -31,3 +31,4 @@ com/motionbridge/core/os/RobotMouseHandler$1.class
 com/motionbridge/core/network/UdpDataServer.class
 com/motionbridge/core/models/MBEvent.class
 com/motionbridge/core/os/brightness/LinuxBrightnessStrategy.class
+com/motionbridge/App$3.class

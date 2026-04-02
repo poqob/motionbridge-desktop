@@ -37,6 +37,9 @@ public class MotionBridgeCore {
 
     public void setDeviceListener(DeviceListener listener) {
         this.uiDeviceListener = listener;
+        if (webSocketServer != null) {
+            webSocketServer.setDeviceListener(listener);
+        }
     }
 
     public void start() {
@@ -63,9 +66,12 @@ public class MotionBridgeCore {
         udpThread.start();
 
         webSocketServer = new WebSocketEventServer(44445, eventProcessor, deviceRegistry);
+        if (uiDeviceListener != null) {
+            webSocketServer.setDeviceListener(uiDeviceListener);
+        }
         webSocketServer.start();
 
-        hostBroadcaster = new HostBroadcaster(44444);
+        hostBroadcaster = new HostBroadcaster(44444, webSocketServer);
         broadcasterThread = new Thread(hostBroadcaster);
         broadcasterThread.start();
 
@@ -112,6 +118,29 @@ public class MotionBridgeCore {
     public void sendDiscoveryAck(DeviceRegistration device) {
         if (udpDataServer != null) {
             udpDataServer.sendAckPacket(device);
+        }
+    }
+
+    public void acceptConnectionRequest(String deviceId, String pairingCode) {
+        if (webSocketServer != null) {
+            webSocketServer.acceptConnectionRequest(deviceId, pairingCode);
+        }
+    }
+
+    public void unpairDevice(DeviceRegistration device) {
+        if (device != null) {
+            String id = device.getId();
+            if (webSocketServer != null) {
+                webSocketServer.disconnectDevice(id);
+            } else {
+                deviceRegistry.removeRegisteredDevice(device);
+            }
+        }
+    }
+
+    public void rejectConnectionRequest(String deviceId, String reason) {
+        if (webSocketServer != null) {
+            webSocketServer.rejectConnectionRequest(deviceId, reason);
         }
     }
 

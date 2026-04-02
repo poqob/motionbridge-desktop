@@ -9,9 +9,11 @@ public class HostBroadcaster implements Runnable {
     private static final int BROADCAST_PORT = 44446; // The port the mobile app will be listening on for host broadcasts
     private volatile boolean running = true;
     private final int udpPort;
+    private final WebSocketEventServer webSocketServer;
 
-    public HostBroadcaster(int udpPort) {
+    public HostBroadcaster(int udpPort, WebSocketEventServer webSocketServer) {
         this.udpPort = udpPort;
+        this.webSocketServer = webSocketServer;
     }
 
     @Override
@@ -20,24 +22,26 @@ public class HostBroadcaster implements Runnable {
             socket.setBroadcast(true);
 
             while (running) {
-                String hostName = System.getenv("COMPUTERNAME");
-                if (hostName == null)
-                    hostName = System.getenv("HOSTNAME");
-                if (hostName == null)
-                    hostName = "MotionBridge-Desktop";
+                if (webSocketServer == null || webSocketServer.getAuthenticatedSessionsCount() == 0) {
+                    String hostName = System.getenv("COMPUTERNAME");
+                    if (hostName == null)
+                        hostName = System.getenv("HOSTNAME");
+                    if (hostName == null)
+                        hostName = "MotionBridge-Desktop";
 
-                JsonObject json = new JsonObject();
-                json.addProperty("type", "host_announcement");
-                json.addProperty("host_name", hostName);
-                json.addProperty("data_port", udpPort);
-                json.addProperty("ws_port", 44445);
+                    JsonObject json = new JsonObject();
+                    json.addProperty("type", "host_announcement");
+                    json.addProperty("host_name", hostName);
+                    json.addProperty("data_port", udpPort);
+                    json.addProperty("ws_port", 44445);
+                    // System.out.println("Broadcasting host presence: " + json.toString());
+                    byte[] buffer = json.toString().getBytes();
+                    // Broadcast to local subnet
+                    InetAddress address = InetAddress.getByName("255.255.255.255");
+                    DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, BROADCAST_PORT);
 
-                byte[] buffer = json.toString().getBytes();
-                // Broadcast to local subnet
-                InetAddress address = InetAddress.getByName("255.255.255.255");
-                DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, BROADCAST_PORT);
-
-                socket.send(packet);
+                    socket.send(packet);
+                }
 
                 Thread.sleep(2000); // Broadcast every 2 seconds
             }

@@ -8,6 +8,15 @@ public class DeviceRegistration {
     private String ip;
     private int port;
     private int version;
+    private transient String pairingCode; // Not saved to json
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getId() {
         return id;
@@ -39,6 +48,14 @@ public class DeviceRegistration {
 
     public int getVersion() {
         return version;
+    }
+
+    public String getPairingCode() {
+        return pairingCode;
+    }
+
+    public void setPairingCode(String pairingCode) {
+        this.pairingCode = pairingCode;
     }
 
     @Override

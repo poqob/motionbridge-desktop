@@ -36,6 +36,11 @@ public class DeviceRegistry {
                 List<DeviceRegistration> loaded = gson.fromJson(reader, listType);
                 if (loaded != null) {
                     registeredDevices.addAll(loaded);
+                    for (DeviceRegistration device : loaded) {
+                        if (device.getIp() != null) {
+                            activeIps.add(device.getIp());
+                        }
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -49,6 +54,27 @@ public class DeviceRegistry {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void updateRegisteredDeviceIp(String id, String ip) {
+        if (id == null || ip == null)
+            return;
+        for (DeviceRegistration d : registeredDevices) {
+            if (id.equals(d.getId())) {
+                d.setIp(ip);
+                activeIps.add(ip);
+                saveRegistry();
+                return;
+            }
+        }
+    }
+
+    public DeviceRegistration getRegisteredDevice(String id) {
+        if (id == null) return null;
+        for (DeviceRegistration d : registeredDevices) {
+            if (id.equals(d.getId())) return d;
+        }
+        return null;
     }
 
     public boolean isDeviceRegistered(String id) {
@@ -87,6 +113,10 @@ public class DeviceRegistry {
 
     public boolean isDevicePending(String id) {
         return id != null && pendingDevices.containsKey(id);
+    }
+
+    public DeviceRegistration getPendingDevice(String id) {
+        return id != null ? pendingDevices.get(id) : null;
     }
 
     public void addPendingDevice(DeviceRegistration device) {
