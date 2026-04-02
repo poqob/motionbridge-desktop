@@ -8,10 +8,13 @@ import com.motionbridge.core.models.MouseMoveEvent;
 import com.motionbridge.core.models.MouseDoubleClickEvent;
 import com.motionbridge.core.models.ScrollEvent;
 import com.motionbridge.core.models.Swipe3Event;
+import com.motionbridge.core.models.DictationEvent;
 
 import com.motionbridge.core.models.AppConfig;
 
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
@@ -330,6 +333,43 @@ public class RobotMouseHandler {
                 robot.keyRelease(KeyEvent.VK_D);
                 robot.keyRelease(KeyEvent.VK_WINDOWS);
                 break;
+        }
+    }
+
+    public synchronized void handleDictation(DictationEvent event) {
+        if (robot == null || event.getText() == null || event.getText().isEmpty()) {
+            return;
+        }
+
+        try {
+            // Append a space as recommended
+            String textToType = event.getText() + " ";
+
+            // Set the clipboard contents
+            StringSelection stringSelection = new StringSelection(textToType);
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            clipboard.setContents(stringSelection, stringSelection);
+
+            String os = System.getProperty("os.name").toLowerCase();
+
+            // Perform paste operation
+            if (os.contains("mac")) {
+                robot.keyPress(KeyEvent.VK_META);
+                robot.keyPress(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_META);
+            } else {
+                robot.keyPress(KeyEvent.VK_CONTROL);
+                robot.keyPress(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_CONTROL);
+            }
+
+            // Small delay to allow the OS to process the paste command
+            Thread.sleep(50);
+
+        } catch (Exception e) {
+            System.err.println("Failed to execute dictation: " + e.getMessage());
         }
     }
 }

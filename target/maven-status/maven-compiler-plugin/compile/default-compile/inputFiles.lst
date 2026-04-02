@@ -11,6 +11,7 @@
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/MBEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/App.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/network/WebSocketEventServer.java
+/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/DictationEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/processor/EventProcessor.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/brightness/MacBrightnessStrategy.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/MouseClickEvent.java

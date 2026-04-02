@@ -24,6 +24,7 @@ com/motionbridge/core/models/ScrollEvent.class
 com/motionbridge/core/os/brightness/WindowsBrightnessStrategy.class
 com/motionbridge/core/models/DiscoveryAck.class
 com/motionbridge/core/network/WebSocketEventServer.class
+com/motionbridge/core/models/DictationEvent.class
 com/motionbridge/core/os/brightness/MacBrightnessStrategy.class
 com/motionbridge/core/models/DimmerEvent.class
 com/motionbridge/core/os/RobotMouseHandler$1.class

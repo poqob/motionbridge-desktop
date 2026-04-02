@@ -60,6 +60,8 @@ public class EventProcessor implements Runnable {
             mouseHandler.handleDoubleClick((MouseDoubleClickEvent) event);
         } else if (event instanceof Swipe3Event) {
             mouseHandler.handleSwipe3((Swipe3Event) event);
+        } else if (event instanceof DictationEvent) {
+            mouseHandler.handleDictation((DictationEvent) event);
         }
     }
 }
