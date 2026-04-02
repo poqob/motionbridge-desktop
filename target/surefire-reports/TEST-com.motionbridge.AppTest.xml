@@ -3,7 +3,7 @@
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/test-classes:/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/classes:/root/.m2/repository/org/java-websocket/Java-WebSocket/1.5.4/Java-WebSocket-1.5.4.jar:/root/.m2/repository/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6.jar:/root/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/root/.m2/repository/junit/junit/4.11/junit-4.11.jar:/root/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/root/.m2/repository/org/openjfx/javafx-controls/17.0.8/javafx-controls-17.0.8.jar:/root/.m2/repository/org/openjfx/javafx-controls/17.0.8/javafx-controls-17.0.8-linux.jar:/root/.m2/repository/org/openjfx/javafx-graphics/17.0.8/javafx-graphics-17.0.8.jar:/root/.m2/repository/org/openjfx/javafx-graphics/17.0.8/javafx-graphics-17.0.8-linux.jar:/root/.m2/repository/org/openjfx/javafx-base/17.0.8/javafx-base-17.0.8.jar:/root/.m2/repository/org/openjfx/javafx-base/17.0.8/javafx-base-17.0.8-linux.jar:"/>
+    <property name="java.class.path" value="/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/test-classes:/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/classes:/home/dag/.m2/repository/org/java-websocket/Java-WebSocket/1.5.4/Java-WebSocket-1.5.4.jar:/home/dag/.m2/repository/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6.jar:/home/dag/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/home/dag/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/dag/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/dag/.m2/repository/org/openjfx/javafx-controls/17.0.8/javafx-controls-17.0.8.jar:/home/dag/.m2/repository/org/openjfx/javafx-controls/17.0.8/javafx-controls-17.0.8-linux.jar:/home/dag/.m2/repository/org/openjfx/javafx-graphics/17.0.8/javafx-graphics-17.0.8.jar:/home/dag/.m2/repository/org/openjfx/javafx-graphics/17.0.8/javafx-graphics-17.0.8-linux.jar:/home/dag/.m2/repository/org/openjfx/javafx-base/17.0.8/javafx-base-17.0.8.jar:/home/dag/.m2/repository/org/openjfx/javafx-base/17.0.8/javafx-base-17.0.8-linux.jar:"/>
     <property name="java.vm.vendor" value="Ubuntu"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="https://ubuntu.com/"/>
@@ -12,11 +12,11 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/surefire/surefirebooter9198228898476209543.jar /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/surefire 2026-04-02T00-42-22_988-jvmRun1 surefire13019289938626537635tmp surefire_014780831966981309872tmp"/>
+    <property name="sun.java.command" value="/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/surefire/surefirebooter9893526823824670831.jar /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/surefire 2026-04-02T01-00-05_930-jvmRun1 surefire10223370825121243076tmp surefire_014535816037343260773tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/test-classes:/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/classes:/root/.m2/repository/org/java-websocket/Java-WebSocket/1.5.4/Java-WebSocket-1.5.4.jar:/root/.m2/repository/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6.jar:/root/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/root/.m2/repository/junit/junit/4.11/junit-4.11.jar:/root/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/root/.m2/repository/org/openjfx/javafx-controls/17.0.8/javafx-controls-17.0.8.jar:/root/.m2/repository/org/openjfx/javafx-controls/17.0.8/javafx-controls-17.0.8-linux.jar:/root/.m2/repository/org/openjfx/javafx-graphics/17.0.8/javafx-graphics-17.0.8.jar:/root/.m2/repository/org/openjfx/javafx-graphics/17.0.8/javafx-graphics-17.0.8-linux.jar:/root/.m2/repository/org/openjfx/javafx-base/17.0.8/javafx-base-17.0.8.jar:/root/.m2/repository/org/openjfx/javafx-base/17.0.8/javafx-base-17.0.8-linux.jar:"/>
+    <property name="surefire.test.class.path" value="/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/test-classes:/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/classes:/home/dag/.m2/repository/org/java-websocket/Java-WebSocket/1.5.4/Java-WebSocket-1.5.4.jar:/home/dag/.m2/repository/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6.jar:/home/dag/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/home/dag/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/dag/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/dag/.m2/repository/org/openjfx/javafx-controls/17.0.8/javafx-controls-17.0.8.jar:/home/dag/.m2/repository/org/openjfx/javafx-controls/17.0.8/javafx-controls-17.0.8-linux.jar:/home/dag/.m2/repository/org/openjfx/javafx-graphics/17.0.8/javafx-graphics-17.0.8.jar:/home/dag/.m2/repository/org/openjfx/javafx-graphics/17.0.8/javafx-graphics-17.0.8-linux.jar:/home/dag/.m2/repository/org/openjfx/javafx-base/17.0.8/javafx-base-17.0.8.jar:/home/dag/.m2/repository/org/openjfx/javafx-base/17.0.8/javafx-base-17.0.8-linux.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="/root"/>
+    <property name="user.home" value="/home/dag"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2026-01-20"/>
@@ -27,17 +27,17 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/surefire/surefirebooter9198228898476209543.jar"/>
+    <property name="surefire.real.class.path" value="/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/target/surefire/surefirebooter9893526823824670831.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.10+7-Ubuntu-124.04"/>
-    <property name="user.name" value="root"/>
+    <property name="user.name" value="dag"/>
     <property name="stdout.encoding" value="UTF-8"/>
     <property name="path.separator" value=":"/>
     <property name="os.version" value="6.11.0-29-generic"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="localRepository" value="/root/.m2/repository"/>
+    <property name="localRepository" value="/home/dag/.m2/repository"/>
     <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-21"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="java.version" value="21.0.10"/>
