@@ -10,6 +10,7 @@ com/motionbridge/App$1.class
 com/motionbridge/core/MotionBridgeCore.class
 com/motionbridge/core/models/MouseDragEndEvent.class
 com/motionbridge/core/os/RobotMouseHandler.class
+com/motionbridge/Launcher.class
 com/motionbridge/App$2.class
 com/motionbridge/App.class
 com/motionbridge/core/models/MouseClickEvent.class
