@@ -7,6 +7,7 @@ import com.motionbridge.core.network.UdpDataServer;
 import com.motionbridge.core.network.WebSocketEventServer;
 import com.motionbridge.core.network.HostBroadcaster;
 import com.motionbridge.core.os.RobotMouseHandler;
+import com.motionbridge.core.os.audio.AudioHandler;
 import com.motionbridge.core.os.brightness.BrightnessHandler;
 import com.motionbridge.core.processor.EventProcessor;
 import com.motionbridge.core.registry.DeviceRegistry;
@@ -21,6 +22,7 @@ public class MotionBridgeCore {
 
     private final RobotMouseHandler mouseHandler;
     private final BrightnessHandler brightnessHandler;
+    private final AudioHandler audioHandler;
     private final EventProcessor eventProcessor;
     private final DeviceRegistry deviceRegistry;
     private final AppConfig appConfig;
@@ -31,7 +33,8 @@ public class MotionBridgeCore {
         this.appConfig = AppConfig.load();
         this.mouseHandler = new RobotMouseHandler(this.appConfig);
         this.brightnessHandler = new BrightnessHandler();
-        this.eventProcessor = new EventProcessor(mouseHandler, brightnessHandler);
+        this.audioHandler = new AudioHandler();
+        this.eventProcessor = new EventProcessor(mouseHandler, brightnessHandler, audioHandler);
         this.deviceRegistry = new DeviceRegistry();
     }
 

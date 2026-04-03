@@ -37,6 +37,10 @@ public class EventParser {
                     return gson.fromJson(jsonObject, Swipe3Event.class);
                 case "DICT":
                     return gson.fromJson(jsonObject, DictationEvent.class);
+                case "VOL":
+                    return gson.fromJson(jsonObject, VolumeEvent.class);
+                case "MUTE":
+                    return gson.fromJson(jsonObject, MuteEvent.class);
                 default:
                     return null;
             }

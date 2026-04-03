@@ -8,14 +8,17 @@ if [ -x "$(command -v apt-get)" ]; then
     echo "Installing brightnessctl via apt..."
     sudo apt-get update
     sudo apt-get install -y brightnessctl
+    sudo apt install pulseaudio-utils
 # Check if the system is Fedora based
 elif [ -x "$(command -v dnf)" ]; then
     echo "Installing brightnessctl via dnf..."
     sudo dnf install -y brightnessctl
+    sudo dnf install -y pulseaudio-utils
 # Check if the system is Arch based
 elif [ -x "$(command -v pacman)" ]; then
     echo "Installing brightnessctl via pacman..."
     sudo pacman -S --noconfirm brightnessctl
+    sudo pacman -S --noconfirm pulseaudio-utils
 else
     echo "Unsupported package manager. Please install 'brightnessctl' manually."
     exit 1

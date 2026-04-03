@@ -2,6 +2,7 @@ package com.motionbridge.core.processor;
 
 import com.motionbridge.core.models.*;
 import com.motionbridge.core.os.RobotMouseHandler;
+import com.motionbridge.core.os.audio.AudioHandler;
 import com.motionbridge.core.os.brightness.BrightnessHandler;
 
 import java.util.concurrent.BlockingQueue;
@@ -10,12 +11,15 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class EventProcessor implements Runnable {
     private final RobotMouseHandler mouseHandler;
     private final BrightnessHandler brightnessHandler;
+    private final AudioHandler audioHandler;
     private final BlockingQueue<MBEvent> eventQueue = new LinkedBlockingQueue<>();
     private volatile boolean running = true;
 
-    public EventProcessor(RobotMouseHandler mouseHandler, BrightnessHandler brightnessHandler) {
+    public EventProcessor(RobotMouseHandler mouseHandler, BrightnessHandler brightnessHandler,
+            AudioHandler audioHandler) {
         this.mouseHandler = mouseHandler;
         this.brightnessHandler = brightnessHandler;
+        this.audioHandler = audioHandler;
     }
 
     public void enqueueEvent(MBEvent event) {
@@ -62,6 +66,10 @@ public class EventProcessor implements Runnable {
             mouseHandler.handleSwipe3((Swipe3Event) event);
         } else if (event instanceof DictationEvent) {
             mouseHandler.handleDictation((DictationEvent) event);
+        } else if (event instanceof VolumeEvent) {
+            audioHandler.handleVolume((VolumeEvent) event);
+        } else if (event instanceof MuteEvent) {
+            audioHandler.handleMute((MuteEvent) event);
         }
     }
 }
