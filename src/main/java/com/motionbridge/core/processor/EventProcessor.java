@@ -33,7 +33,12 @@ public class EventProcessor implements Runnable {
         while (running) {
             try {
                 MBEvent event = eventQueue.take();
-                processEvent(event);
+                try {
+                    processEvent(event);
+                } catch (Exception e) {
+                    System.err.println("Error processing event: " + event.getClass().getSimpleName());
+                    e.printStackTrace();
+                }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 running = false;

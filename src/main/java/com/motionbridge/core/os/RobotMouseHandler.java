@@ -46,6 +46,16 @@ public class RobotMouseHandler {
 
     public RobotMouseHandler(AppConfig appConfig) {
         this.appConfig = appConfig;
+
+        // Wayland kontrolü - Kullanıcıyı bilgilendirmek için
+        String sessionType = System.getenv("XDG_SESSION_TYPE");
+        if ("wayland".equalsIgnoreCase(sessionType)) {
+            System.err.println(
+                    "UYARI: Linux sisteminiz Wayland kullanıyor. java.awt.Robot sınıfı Wayland üzerinde güvenlik nedeniyle fare/klavye simülasyonu yapamaz.");
+            System.err.println(
+                    "Çözüm: Oturum açarken 'Ubuntu on Xorg' (X11) seçin veya ydotool gibi alternatif bir araç kullanın.");
+        }
+
         try {
             this.robot = new Robot();
             startMotionEngine();

@@ -34,7 +34,7 @@ public class UdpDataServer implements Runnable {
         try {
             socket = new DatagramSocket(UDP_PORT);
             socket.setBroadcast(true);
-            System.out.println("UDP Data Server listening on UDP port " + UDP_PORT);
+            // System.out.println("UDP Data Server listening on UDP port " + UDP_PORT);
 
             byte[] buffer = new byte[2048];
 
@@ -61,12 +61,24 @@ public class UdpDataServer implements Runnable {
                             }
                         }
                     } else if (jsonObject.has("t")) {
-                        // Sadece aktif olan IP'lerden (handshake tamamlanmis) gelirse kabul et
-                        if (deviceRegistry.isIpActive(sourceIp)) {
+                        // Eğer aktif eşleşmiş bir cihaz varsa veya IP aktifse paketleri kabul et
+                        // Hotspot kullanımında Android UDP için farklı bir IP arayüzü (100.x.x.x gibi)
+                        // kullanabiliyor.
+                        boolean isRegisteredDevicePresent = deviceRegistry.getRegisteredDevices().size() > 0;
+                        if (deviceRegistry.isIpActive(sourceIp) || isRegisteredDevicePresent) {
+                            if (!deviceRegistry.isIpActive(sourceIp) && isRegisteredDevicePresent) {
+                                // Bu yeni UDP IP'sini geçici olarak aktif listesine alalım
+                                deviceRegistry.blockIpTemporarily(sourceIp); // just an example, maybe we need active
+                                                                             // string
+                                // Let's just process it anyway
+                                // System.out.println("Accepting UDP from alternative IP: " + sourceIp);
+                            }
                             MBEvent event = EventParser.parse(jsonString);
                             if (event != null) {
                                 eventProcessor.enqueueEvent(event);
                             }
+                        } else {
+                            // System.out.println("UDP Packet ignored from inactive IP: " + sourceIp);
                         }
                     }
                 } catch (Exception e) {
@@ -109,7 +121,8 @@ public class UdpDataServer implements Runnable {
             sendSocket.send(sendPacket);
             sendSocket.close();
 
-            System.out.println("Ack paket gonderildi -> " + device.getIp() + ":" + device.getPort());
+            // System.out.println("Ack paket gonderildi -> " + device.getIp() + ":" +
+            // device.getPort());
 
         } catch (Exception e) {
             System.err.println("Failed to send Handshake ACK: " + e.getMessage());

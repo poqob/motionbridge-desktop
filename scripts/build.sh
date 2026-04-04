@@ -15,6 +15,7 @@ OS_TYPE="$(uname -s)"
 case "${OS_TYPE}" in
     Linux*)
         echo "Tespit Edilen Sistem: Linux (Ubuntu/Debian)"
+        mvn clean package
         # Not: Linux için icon .png olmalı
         jpackage \
           --name "$APP_NAME" \

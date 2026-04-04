@@ -3,6 +3,7 @@ target/
 /.target/
 .vscode/
 .idea/
+*.deb
 *.iml
 *.log
 *.tmp
