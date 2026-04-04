@@ -1,7 +1,5 @@
-target/
-/target/
-/.target/
 .vscode/
+target/
 .idea/
 *.deb
 *.iml

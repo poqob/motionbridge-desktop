@@ -1,2 +1,11 @@
+[UI UPDATES]
 - daha iyi UI| host_name adını UI'dan değiştirilmesi.
- 
+- karanlık tema + aydınlık tema gri tonlarına çekilsin beyaz çok göz alıyor.
+- pencereyi kapatsan bile arkaplanda servis ile çalışabilme özelliği
+- No more javaFX! Switch to atlantaFX!!!!! Source:https://mkpaz.github.io/atlantafx/
+
+
+[NEW FEATURES]
+- custom gesture menu | swipe3R default Vdesktop or set swipe 3R XTask
+- multimedia controll | track play/stop next/previous -WEBSOCKET-
+- magic mouse
