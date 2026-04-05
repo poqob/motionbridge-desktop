@@ -4,6 +4,7 @@ import com.motionbridge.core.models.*;
 import com.motionbridge.core.os.RobotMouseHandler;
 import com.motionbridge.core.os.audio.AudioHandler;
 import com.motionbridge.core.os.brightness.BrightnessHandler;
+import com.motionbridge.core.os.media.MediaHandler;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -12,14 +13,16 @@ public class EventProcessor implements Runnable {
     private final RobotMouseHandler mouseHandler;
     private final BrightnessHandler brightnessHandler;
     private final AudioHandler audioHandler;
+    private final MediaHandler mediaHandler;
     private final BlockingQueue<MBEvent> eventQueue = new LinkedBlockingQueue<>();
     private volatile boolean running = true;
 
     public EventProcessor(RobotMouseHandler mouseHandler, BrightnessHandler brightnessHandler,
-            AudioHandler audioHandler) {
+            AudioHandler audioHandler, MediaHandler mediaHandler) {
         this.mouseHandler = mouseHandler;
         this.brightnessHandler = brightnessHandler;
         this.audioHandler = audioHandler;
+        this.mediaHandler = mediaHandler;
     }
 
     public void enqueueEvent(MBEvent event) {
@@ -75,6 +78,8 @@ public class EventProcessor implements Runnable {
             audioHandler.handleVolume((VolumeEvent) event);
         } else if (event instanceof MuteEvent) {
             audioHandler.handleMute((MuteEvent) event);
+        } else if (event instanceof MediaEvent) {
+            mediaHandler.handleMedia((MediaEvent) event);
         }
     }
 }

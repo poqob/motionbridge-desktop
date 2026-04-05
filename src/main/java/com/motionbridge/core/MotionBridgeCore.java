@@ -9,6 +9,11 @@ import com.motionbridge.core.network.HostBroadcaster;
 import com.motionbridge.core.os.RobotMouseHandler;
 import com.motionbridge.core.os.audio.AudioHandler;
 import com.motionbridge.core.os.brightness.BrightnessHandler;
+import com.motionbridge.core.os.media.MediaHandler;
+import com.motionbridge.core.os.media.MediaStrategy;
+import com.motionbridge.core.os.media.WindowsMediaStrategy;
+import com.motionbridge.core.os.media.LinuxMediaStrategy;
+import com.motionbridge.core.os.media.MacMediaStrategy;
 import com.motionbridge.core.processor.EventProcessor;
 import com.motionbridge.core.registry.DeviceRegistry;
 
@@ -23,6 +28,7 @@ public class MotionBridgeCore {
     private final RobotMouseHandler mouseHandler;
     private final BrightnessHandler brightnessHandler;
     private final AudioHandler audioHandler;
+    private final MediaHandler mediaHandler;
     private final EventProcessor eventProcessor;
     private final DeviceRegistry deviceRegistry;
     private final AppConfig appConfig;
@@ -34,8 +40,20 @@ public class MotionBridgeCore {
         this.mouseHandler = new RobotMouseHandler(this.appConfig);
         this.brightnessHandler = new BrightnessHandler();
         this.audioHandler = new AudioHandler();
-        this.eventProcessor = new EventProcessor(mouseHandler, brightnessHandler, audioHandler);
+        this.mediaHandler = new MediaHandler(createMediaStrategy());
+        this.eventProcessor = new EventProcessor(mouseHandler, brightnessHandler, audioHandler, mediaHandler);
         this.deviceRegistry = new DeviceRegistry();
+    }
+
+    private MediaStrategy createMediaStrategy() {
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.contains("win")) {
+            return new WindowsMediaStrategy();
+        } else if (osName.contains("mac")) {
+            return new MacMediaStrategy();
+        } else {
+            return new LinuxMediaStrategy();
+        }
     }
 
     public void setDeviceListener(DeviceListener listener) {

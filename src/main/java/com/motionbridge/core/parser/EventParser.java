@@ -41,6 +41,8 @@ public class EventParser {
                     return gson.fromJson(jsonObject, VolumeEvent.class);
                 case "MUTE":
                     return gson.fromJson(jsonObject, MuteEvent.class);
+                case "MEDIA":
+                    return gson.fromJson(jsonObject, MediaEvent.class);
                 default:
                     return null;
             }
