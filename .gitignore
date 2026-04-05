@@ -2,6 +2,7 @@
 target/
 .idea/
 *.deb
+*.exe
 *.iml
 *.log
 *.tmp

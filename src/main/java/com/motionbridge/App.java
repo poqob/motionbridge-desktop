@@ -14,6 +14,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import atlantafx.base.theme.CupertinoLight;
+import atlantafx.base.theme.CupertinoDark;
+import atlantafx.base.theme.Styles;
 import com.motionbridge.core.network.DeviceListener;
 
 public class App extends Application {
@@ -65,11 +68,16 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        if (core.getAppConfig().isDarkTheme()) {
+            Application.setUserAgentStylesheet(new CupertinoDark().getUserAgentStylesheet());
+        } else {
+            Application.setUserAgentStylesheet(new CupertinoLight().getUserAgentStylesheet());
+        }
+
         primaryStage.setTitle("MotionBridge Server");
 
         TabPane tabPane = new TabPane();
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        tabPane.setStyle("-fx-font-family: 'Segoe UI', sans-serif;");
 
         // --- DASHBOARD TAB ---
         Tab dashboardTab = new Tab("Gösterge Paneli");
@@ -77,10 +85,10 @@ public class App extends Application {
         dashboardRoot.setPadding(new Insets(15));
 
         Label statusLabel = new Label("Yayın Yapılıyor... (UDP: 44444, WS: 44445)");
-        statusLabel.setStyle("-fx-text-fill: #4CAF50; -fx-font-weight: bold;");
+        statusLabel.getStyleClass().addAll(Styles.SUCCESS, Styles.TEXT_BOLD);
 
         Label pendingLabel = new Label("Eşleşme Bekleyen Cihazlar:");
-        pendingLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+        pendingLabel.getStyleClass().add(Styles.TITLE_4);
 
         ListView<DeviceRegistration> pendingListView = new ListView<>(pendingList);
         pendingListView.setCellFactory(param -> new ListCell<DeviceRegistration>() {
@@ -97,11 +105,9 @@ public class App extends Application {
         pendingListView.setPrefHeight(150);
 
         Button btnAccept = new Button("Kabul Et");
-        btnAccept.setStyle(
-                "-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;");
+        btnAccept.getStyleClass().add(Styles.SUCCESS);
         Button btnReject = new Button("Reddet");
-        btnReject.setStyle(
-                "-fx-background-color: #F44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;");
+        btnReject.getStyleClass().add(Styles.DANGER);
 
         btnAccept.setOnAction(e -> {
             DeviceRegistration selected = pendingListView.getSelectionModel().getSelectedItem();
@@ -145,8 +151,45 @@ public class App extends Application {
         VBox settingsRoot = new VBox(20);
         settingsRoot.setPadding(new Insets(15));
 
+        HBox topSettingsBox = new HBox(20);
+        VBox hostNameBox = new VBox(5);
+        Label hostNameLabel = new Label("Yayın Adı (Hostname):");
+        hostNameLabel.getStyleClass().add(Styles.TEXT_BOLD);
+        TextField hostNameField = new TextField(core.getAppConfig().getHostName());
+        hostNameField.setPromptText("Boş bırakılırsa bilgisayar adı kullanılır");
+        Button btnSaveHost = new Button("Kaydet");
+        btnSaveHost.getStyleClass().add(Styles.ACCENT);
+        btnSaveHost.setOnAction(e -> {
+            core.getAppConfig().setHostName(hostNameField.getText());
+            core.getAppConfig().save();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION,
+                    "Cihaz adı kaydedildi! Eşleşme yayınında kullanılacak.", ButtonType.OK);
+            alert.show();
+        });
+        hostNameBox.getChildren().addAll(hostNameLabel, hostNameField, btnSaveHost);
+
+        VBox themeBox = new VBox(5);
+        Label themeLabel = new Label("Tema (Karanlık/Aydınlık):");
+        themeLabel.getStyleClass().add(Styles.TEXT_BOLD);
+        ToggleButton themeToggle = new ToggleButton(core.getAppConfig().isDarkTheme() ? "Karanlık" : "Aydınlık");
+        themeToggle.setSelected(core.getAppConfig().isDarkTheme());
+        themeToggle.setOnAction(e -> {
+            boolean isDark = themeToggle.isSelected();
+            core.getAppConfig().setDarkTheme(isDark);
+            core.getAppConfig().save();
+            themeToggle.setText(isDark ? "Karanlık" : "Aydınlık");
+            if (isDark) {
+                Application.setUserAgentStylesheet(new CupertinoDark().getUserAgentStylesheet());
+            } else {
+                Application.setUserAgentStylesheet(new CupertinoLight().getUserAgentStylesheet());
+            }
+        });
+        themeBox.getChildren().addAll(themeLabel, themeToggle);
+
+        topSettingsBox.getChildren().addAll(hostNameBox, themeBox);
+
         Label registeredLabel = new Label("Eşleşmiş (Yetkili) Cihazlar:");
-        registeredLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+        registeredLabel.getStyleClass().add(Styles.TITLE_4);
 
         ListView<DeviceRegistration> registeredListView = new ListView<>(registeredList);
         registeredListView.setCellFactory(param -> new ListCell<DeviceRegistration>() {
@@ -163,8 +206,7 @@ public class App extends Application {
         registeredListView.setPrefHeight(120);
 
         Button btnUnpair = new Button("Eşleşmeyi Sil");
-        btnUnpair.setStyle(
-                "-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;");
+        btnUnpair.getStyleClass().add(Styles.WARNING);
         btnUnpair.setOnAction(e -> {
             DeviceRegistration selected = registeredListView.getSelectionModel().getSelectedItem();
             if (selected != null) {
@@ -174,7 +216,7 @@ public class App extends Application {
         });
 
         Label trackpadLabel = new Label("Trackpad Ayarları:");
-        trackpadLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
+        trackpadLabel.getStyleClass().add(Styles.TITLE_4);
 
         Label scrollSpeedLabel = new Label("Kaydırma Hızı (Scroll Speed):");
         Slider scrollSpeedSlider = new Slider(0.01, 0.2, core.getAppConfig().getScrollSpeed());
@@ -195,6 +237,8 @@ public class App extends Application {
         });
 
         settingsRoot.getChildren().addAll(
+                topSettingsBox,
+                new Separator(),
                 registeredLabel, registeredListView, btnUnpair,
                 new Separator(),
                 trackpadLabel, scrollSpeedLabel, scrollSpeedSlider,

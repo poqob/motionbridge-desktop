@@ -186,7 +186,8 @@ public class WebSocketEventServer extends WebSocketServer {
 
             MBEvent event = EventParser.parse(message);
             if (event != null) {
-                System.out.println("Received event from WebSocket: " + event.getClass().getSimpleName());
+                // System.out.println("Received event from WebSocket: " +
+                // event.getClass().getSimpleName());
                 eventProcessor.enqueueEvent(event);
             }
         } catch (Exception e) {

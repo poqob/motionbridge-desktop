@@ -103,11 +103,15 @@ public class UdpDataServer implements Runnable {
 
     public void sendAckPacket(DeviceRegistration device) {
         try {
-            String hostName = System.getenv("COMPUTERNAME");
-            if (hostName == null)
-                hostName = System.getenv("HOSTNAME");
-            if (hostName == null)
-                hostName = "MotionBridge-Desktop";
+            AppConfig config = AppConfig.load();
+            String hostName = config.getHostName();
+            if (hostName == null || hostName.trim().isEmpty()) {
+                hostName = System.getenv("COMPUTERNAME");
+                if (hostName == null)
+                    hostName = System.getenv("HOSTNAME");
+                if (hostName == null)
+                    hostName = "MotionBridge-Desktop";
+            }
 
             DiscoveryAck ack = new DiscoveryAck(hostName, UDP_PORT, WS_PORT);
             String jsonAck = gson.toJson(ack);

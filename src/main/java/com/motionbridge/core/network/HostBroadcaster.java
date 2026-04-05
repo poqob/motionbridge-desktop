@@ -1,6 +1,7 @@
 package com.motionbridge.core.network;
 
 import com.google.gson.JsonObject;
+import com.motionbridge.core.models.AppConfig;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -23,11 +24,15 @@ public class HostBroadcaster implements Runnable {
 
             while (running) {
                 if (webSocketServer == null || webSocketServer.getAuthenticatedSessionsCount() == 0) {
-                    String hostName = System.getenv("COMPUTERNAME");
-                    if (hostName == null)
-                        hostName = System.getenv("HOSTNAME");
-                    if (hostName == null)
-                        hostName = "MotionBridge-Desktop";
+                    AppConfig config = AppConfig.load();
+                    String hostName = config.getHostName();
+                    if (hostName == null || hostName.trim().isEmpty()) {
+                        hostName = System.getenv("COMPUTERNAME");
+                        if (hostName == null)
+                            hostName = System.getenv("HOSTNAME");
+                        if (hostName == null)
+                            hostName = "MotionBridge-Desktop";
+                    }
 
                     JsonObject json = new JsonObject();
                     json.addProperty("type", "host_announcement");

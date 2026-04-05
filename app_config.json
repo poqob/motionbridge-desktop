@@ -1,4 +1,6 @@
 {
-  "scrollSpeed": 0.04106435643564355,
-  "pointerSpeed": 1.4133663366336635
+  "scrollSpeed": 0.02538935643564355,
+  "pointerSpeed": 1.2199999999999998,
+  "hostName": "dag-advanced-calculator",
+  "darkTheme": true
 }
