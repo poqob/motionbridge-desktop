@@ -8,6 +8,7 @@ import com.motionbridge.core.models.MouseMoveEvent;
 import com.motionbridge.core.models.MouseDoubleClickEvent;
 import com.motionbridge.core.models.ScrollEvent;
 import com.motionbridge.core.models.Swipe3Event;
+import com.motionbridge.core.models.Tap4Event;
 import com.motionbridge.core.models.DictationEvent;
 
 import com.motionbridge.core.models.AppConfig;
@@ -334,15 +335,42 @@ public class RobotMouseHandler {
                 robot.keyRelease(KeyEvent.VK_CONTROL);
                 break;
             case "UP":
-                robot.keyPress(KeyEvent.VK_WINDOWS);
-                robot.keyRelease(KeyEvent.VK_WINDOWS);
+                try {
+                    Runtime.getRuntime().exec("xdotool key Super_L");
+                } catch (Exception e) {
+                    System.err.println("Failed to execute xdotool: " + e.getMessage());
+                }
                 break;
             case "DOWN":
-                robot.keyPress(KeyEvent.VK_WINDOWS);
+                robot.keyPress(KeyEvent.VK_CONTROL);
+                robot.keyPress(KeyEvent.VK_ALT);
                 robot.keyPress(KeyEvent.VK_D);
                 robot.keyRelease(KeyEvent.VK_D);
-                robot.keyRelease(KeyEvent.VK_WINDOWS);
+                robot.keyRelease(KeyEvent.VK_ALT);
+                robot.keyRelease(KeyEvent.VK_CONTROL);
                 break;
+        }
+    }
+
+    public synchronized void handleTap4(Tap4Event event) {
+        if (robot == null)
+            return;
+
+        try {
+            String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("mac")) {
+                robot.keyPress(KeyEvent.VK_META);
+                robot.keyPress(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_META);
+            } else {
+                robot.keyPress(KeyEvent.VK_CONTROL);
+                robot.keyPress(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_CONTROL);
+            }
+        } catch (Exception e) {
+            System.err.println("Failed to execute tap4: " + e.getMessage());
         }
     }
 

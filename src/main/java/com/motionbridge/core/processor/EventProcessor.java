@@ -72,6 +72,8 @@ public class EventProcessor implements Runnable {
             mouseHandler.handleDoubleClick((MouseDoubleClickEvent) event);
         } else if (event instanceof Swipe3Event) {
             mouseHandler.handleSwipe3((Swipe3Event) event);
+        } else if (event instanceof Tap4Event) {
+            mouseHandler.handleTap4((Tap4Event) event);
         } else if (event instanceof DictationEvent) {
             mouseHandler.handleDictation((DictationEvent) event);
         } else if (event instanceof VolumeEvent) {
