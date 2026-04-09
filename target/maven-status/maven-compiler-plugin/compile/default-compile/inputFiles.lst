@@ -46,5 +46,6 @@
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/system/SystemStrategy.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/DeviceRegistration.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/system/MacSystemStrategy.java
+/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/ClipboardEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/audio/WindowsAudioStrategy.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/MouseMoveEvent.java

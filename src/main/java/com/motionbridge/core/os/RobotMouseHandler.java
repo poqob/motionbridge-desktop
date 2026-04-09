@@ -10,6 +10,7 @@ import com.motionbridge.core.models.ScrollEvent;
 import com.motionbridge.core.models.Swipe3Event;
 import com.motionbridge.core.models.Tap4Event;
 import com.motionbridge.core.models.DictationEvent;
+import com.motionbridge.core.models.ClipboardEvent;
 
 import com.motionbridge.core.models.AppConfig;
 
@@ -408,6 +409,42 @@ public class RobotMouseHandler {
 
         } catch (Exception e) {
             System.err.println("Failed to execute dictation: " + e.getMessage());
+        }
+    }
+
+    public synchronized void handleClipboard(ClipboardEvent event) {
+        if (robot == null || event.getText() == null || event.getText().isEmpty()) {
+            return;
+        }
+
+        try {
+            String textToPaste = event.getText();
+
+            // Set the clipboard contents
+            StringSelection stringSelection = new StringSelection(textToPaste);
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            clipboard.setContents(stringSelection, stringSelection);
+
+            String os = System.getProperty("os.name").toLowerCase();
+
+            // Perform paste operation
+            if (os.contains("mac")) {
+                robot.keyPress(KeyEvent.VK_META);
+                robot.keyPress(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_META);
+            } else {
+                robot.keyPress(KeyEvent.VK_CONTROL);
+                robot.keyPress(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_CONTROL);
+            }
+
+            // Small delay to allow the OS to process the paste command
+            Thread.sleep(50);
+
+        } catch (Exception e) {
+            System.err.println("Failed to execute clipboard paste: " + e.getMessage());
         }
     }
 }

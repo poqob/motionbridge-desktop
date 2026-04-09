@@ -39,6 +39,8 @@ public class EventParser {
                     return gson.fromJson(jsonObject, Tap4Event.class);
                 case "DICT":
                     return gson.fromJson(jsonObject, DictationEvent.class);
+                case "CLIP":
+                    return gson.fromJson(jsonObject, ClipboardEvent.class);
                 case "VOL":
                     return gson.fromJson(jsonObject, VolumeEvent.class);
                 case "MUTE":

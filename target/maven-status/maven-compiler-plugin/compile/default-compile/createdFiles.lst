@@ -14,6 +14,7 @@ com/motionbridge/core/os/brightness/WindowsBrightnessStrategy.class
 com/motionbridge/core/os/media/LinuxMediaStrategy.class
 com/motionbridge/core/os/system/WindowsSystemStrategy.class
 com/motionbridge/core/os/brightness/MacBrightnessStrategy.class
+com/motionbridge/core/models/ClipboardEvent.class
 com/motionbridge/core/os/audio/WindowsAudioStrategy.class
 com/motionbridge/core/os/audio/AudioHandler.class
 com/motionbridge/core/models/MuteEvent.class

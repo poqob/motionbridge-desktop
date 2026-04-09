@@ -79,6 +79,8 @@ public class EventProcessor implements Runnable {
             mouseHandler.handleTap4((Tap4Event) event);
         } else if (event instanceof DictationEvent) {
             mouseHandler.handleDictation((DictationEvent) event);
+        } else if (event instanceof ClipboardEvent) {
+            mouseHandler.handleClipboard((ClipboardEvent) event);
         } else if (event instanceof VolumeEvent) {
             audioHandler.handleVolume((VolumeEvent) event);
         } else if (event instanceof MuteEvent) {
