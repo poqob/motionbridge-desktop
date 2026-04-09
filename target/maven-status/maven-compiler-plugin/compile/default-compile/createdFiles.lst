@@ -4,6 +4,7 @@ com/motionbridge/core/registry/DeviceRegistry.class
 com/motionbridge/core/models/MouseMoveEvent.class
 com/motionbridge/App$1.class
 com/motionbridge/core/MotionBridgeCore.class
+com/motionbridge/core/os/system/SystemHandler.class
 com/motionbridge/core/models/MouseClickEvent.class
 com/motionbridge/core/os/media/WindowsMediaStrategy.class
 com/motionbridge/core/network/DeviceListener.class
@@ -11,6 +12,7 @@ com/motionbridge/core/os/media/MediaHandler.class
 com/motionbridge/core/models/MediaEvent.class
 com/motionbridge/core/os/brightness/WindowsBrightnessStrategy.class
 com/motionbridge/core/os/media/LinuxMediaStrategy.class
+com/motionbridge/core/os/system/WindowsSystemStrategy.class
 com/motionbridge/core/os/brightness/MacBrightnessStrategy.class
 com/motionbridge/core/os/audio/WindowsAudioStrategy.class
 com/motionbridge/core/os/audio/AudioHandler.class
@@ -19,11 +21,13 @@ com/motionbridge/core/models/DimmerEvent.class
 com/motionbridge/core/network/UdpDataServer.class
 com/motionbridge/core/models/MBEvent.class
 com/motionbridge/core/os/audio/MacAudioStrategy.class
+com/motionbridge/core/os/system/LinuxSystemStrategy.class
 com/motionbridge/core/models/MouseDragEvent.class
 com/motionbridge/core/models/Swipe3Event.class
 com/motionbridge/core/registry/DeviceRegistry$1.class
 com/motionbridge/core/os/media/MediaStrategy.class
 com/motionbridge/core/models/DeviceRegistration.class
+com/motionbridge/core/os/system/MacSystemStrategy.class
 com/motionbridge/core/models/MouseDragEndEvent.class
 com/motionbridge/core/os/RobotMouseHandler.class
 com/motionbridge/Launcher.class
@@ -35,10 +39,12 @@ com/motionbridge/core/network/HostBroadcaster.class
 com/motionbridge/core/os/brightness/BrightnessHandler.class
 com/motionbridge/core/os/brightness/BrightnessStrategy.class
 com/motionbridge/core/models/VolumeEvent.class
+com/motionbridge/core/models/SystemEvent.class
 com/motionbridge/core/models/MouseDoubleClickEvent.class
 com/motionbridge/core/parser/EventParser.class
 com/motionbridge/core/models/ScrollEvent.class
 com/motionbridge/core/models/DiscoveryAck.class
+com/motionbridge/core/os/system/SystemStrategy.class
 com/motionbridge/core/network/WebSocketEventServer.class
 com/motionbridge/core/models/DictationEvent.class
 com/motionbridge/core/os/audio/LinuxAudioStrategy.class

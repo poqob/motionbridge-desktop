@@ -14,6 +14,7 @@ import com.motionbridge.core.os.media.MediaStrategy;
 import com.motionbridge.core.os.media.WindowsMediaStrategy;
 import com.motionbridge.core.os.media.LinuxMediaStrategy;
 import com.motionbridge.core.os.media.MacMediaStrategy;
+import com.motionbridge.core.os.system.SystemHandler;
 import com.motionbridge.core.processor.EventProcessor;
 import com.motionbridge.core.registry.DeviceRegistry;
 
@@ -29,6 +30,7 @@ public class MotionBridgeCore {
     private final BrightnessHandler brightnessHandler;
     private final AudioHandler audioHandler;
     private final MediaHandler mediaHandler;
+    private final SystemHandler systemHandler;
     private final EventProcessor eventProcessor;
     private final DeviceRegistry deviceRegistry;
     private final AppConfig appConfig;
@@ -41,7 +43,9 @@ public class MotionBridgeCore {
         this.brightnessHandler = new BrightnessHandler();
         this.audioHandler = new AudioHandler();
         this.mediaHandler = new MediaHandler(createMediaStrategy());
-        this.eventProcessor = new EventProcessor(mouseHandler, brightnessHandler, audioHandler, mediaHandler);
+        this.systemHandler = new SystemHandler();
+        this.eventProcessor = new EventProcessor(mouseHandler, brightnessHandler, audioHandler, mediaHandler,
+                systemHandler);
         this.deviceRegistry = new DeviceRegistry();
     }
 
