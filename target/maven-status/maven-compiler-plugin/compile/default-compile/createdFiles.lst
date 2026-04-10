@@ -18,6 +18,7 @@ com/motionbridge/core/models/ClipboardEvent.class
 com/motionbridge/core/os/audio/WindowsAudioStrategy.class
 com/motionbridge/core/os/audio/AudioHandler.class
 com/motionbridge/core/models/MuteEvent.class
+com/motionbridge/core/os/system/SystemHandler$1.class
 com/motionbridge/core/models/DimmerEvent.class
 com/motionbridge/core/network/UdpDataServer.class
 com/motionbridge/core/models/MBEvent.class
