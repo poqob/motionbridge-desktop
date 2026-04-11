@@ -89,6 +89,10 @@ public class EventProcessor implements Runnable {
             mediaHandler.handleMedia((MediaEvent) event);
         } else if (event instanceof SystemEvent) {
             systemHandler.handleSystemEvent((SystemEvent) event);
+        } else if (event instanceof CopyEvent) {
+            mouseHandler.handleCopy((CopyEvent) event);
+        } else if (event instanceof PasteEvent) {
+            mouseHandler.handlePaste((PasteEvent) event);
         }
     }
 }

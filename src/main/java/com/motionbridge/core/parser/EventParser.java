@@ -49,6 +49,10 @@ public class EventParser {
                     return gson.fromJson(jsonObject, MediaEvent.class);
                 case "SYS":
                     return gson.fromJson(jsonObject, SystemEvent.class);
+                case "COPY":
+                    return gson.fromJson(jsonObject, CopyEvent.class);
+                case "PASTE":
+                    return gson.fromJson(jsonObject, PasteEvent.class);
                 default:
                     return null;
             }

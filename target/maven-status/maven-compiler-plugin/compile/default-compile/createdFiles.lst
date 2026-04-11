@@ -30,6 +30,7 @@ com/motionbridge/core/registry/DeviceRegistry$1.class
 com/motionbridge/core/os/media/MediaStrategy.class
 com/motionbridge/core/models/DeviceRegistration.class
 com/motionbridge/core/os/system/MacSystemStrategy.class
+com/motionbridge/core/models/CopyEvent.class
 com/motionbridge/core/models/MouseDragEndEvent.class
 com/motionbridge/core/os/RobotMouseHandler.class
 com/motionbridge/Launcher.class
@@ -46,6 +47,7 @@ com/motionbridge/core/models/MouseDoubleClickEvent.class
 com/motionbridge/core/parser/EventParser.class
 com/motionbridge/core/models/ScrollEvent.class
 com/motionbridge/core/models/DiscoveryAck.class
+com/motionbridge/core/models/PasteEvent.class
 com/motionbridge/core/os/system/SystemStrategy.class
 com/motionbridge/core/network/WebSocketEventServer.class
 com/motionbridge/core/models/DictationEvent.class

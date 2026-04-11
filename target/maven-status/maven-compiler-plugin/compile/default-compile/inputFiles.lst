@@ -12,6 +12,7 @@
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/VolumeEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/MBEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/network/WebSocketEventServer.java
+/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/CopyEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/DictationEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/media/MediaStrategy.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/audio/AudioHandler.java
@@ -33,6 +34,7 @@
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/brightness/BrightnessHandler.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/MotionBridgeCore.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/MouseDragEvent.java
+/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/PasteEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/system/LinuxSystemStrategy.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/App.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/MediaEvent.java
