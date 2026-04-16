@@ -6,6 +6,7 @@
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/MouseDoubleClickEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/brightness/LinuxBrightnessStrategy.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/audio/MacAudioStrategy.java
+/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/AMMoveEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/RobotMouseHandler.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/registry/DeviceRegistry.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/DiscoveryAck.java
@@ -30,7 +31,9 @@
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/network/UdpDataServer.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/DimmerEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/audio/LinuxAudioStrategy.java
+/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/AMSensEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/audio/AudioStrategy.java
+/mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/AMModeEvent.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/os/brightness/BrightnessHandler.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/MotionBridgeCore.java
 /mnt/newdisk/dosyalar/Dosyalar/projeler/java/motionbridge-desktop/src/main/java/com/motionbridge/core/models/MouseDragEvent.java

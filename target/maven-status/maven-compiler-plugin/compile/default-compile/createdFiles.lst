@@ -13,6 +13,7 @@ com/motionbridge/core/models/MediaEvent.class
 com/motionbridge/core/os/brightness/WindowsBrightnessStrategy.class
 com/motionbridge/core/os/media/LinuxMediaStrategy.class
 com/motionbridge/core/os/system/WindowsSystemStrategy.class
+com/motionbridge/core/models/AMMoveEvent.class
 com/motionbridge/core/os/brightness/MacBrightnessStrategy.class
 com/motionbridge/core/models/ClipboardEvent.class
 com/motionbridge/core/os/audio/WindowsAudioStrategy.class
@@ -37,6 +38,7 @@ com/motionbridge/Launcher.class
 com/motionbridge/App$2.class
 com/motionbridge/App.class
 com/motionbridge/core/os/audio/AudioStrategy.class
+com/motionbridge/core/models/AMSensEvent.class
 com/motionbridge/core/models/AppConfig.class
 com/motionbridge/core/network/HostBroadcaster.class
 com/motionbridge/core/os/brightness/BrightnessHandler.class
@@ -56,4 +58,5 @@ com/motionbridge/core/os/media/MacMediaStrategy.class
 com/motionbridge/core/os/RobotMouseHandler$1.class
 com/motionbridge/core/models/Tap4Event.class
 com/motionbridge/core/os/brightness/LinuxBrightnessStrategy.class
+com/motionbridge/core/models/AMModeEvent.class
 com/motionbridge/App$3.class

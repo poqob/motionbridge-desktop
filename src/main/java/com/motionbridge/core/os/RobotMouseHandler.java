@@ -13,6 +13,9 @@ import com.motionbridge.core.models.DictationEvent;
 import com.motionbridge.core.models.ClipboardEvent;
 import com.motionbridge.core.models.CopyEvent;
 import com.motionbridge.core.models.PasteEvent;
+import com.motionbridge.core.models.AMModeEvent;
+import com.motionbridge.core.models.AMSensEvent;
+import com.motionbridge.core.models.AMMoveEvent;
 
 import com.motionbridge.core.models.AppConfig;
 
@@ -41,6 +44,27 @@ public class RobotMouseHandler {
     // Sürükle bırak durumu
     private boolean isDragging = false;
     private long lastDragEndTime = 0; // Sürükleme sonrası tıklamaları reddetmek için zaman damgası
+
+    // Air Mouse Durumu
+    private boolean amModeEnabled = false;
+    private double amSensitivity = 1.0;
+    private static final double AM_MOVEMENT_SCALE = 30.0;
+    private static final double AM_SCROLL_SCALE = 20.0;
+
+    // IMU Filtreleme için low-pass filter katsayıları (0-1 arası, düşük = daha pürüzsüz)
+    private static final double AM_FILTER_ALPHA = 0.25;
+
+    // Filtrelenmiş IMU değerleri (smoothed)
+    private double filteredX = 0.0;
+    private double filteredY = 0.0;
+    private double filteredZ = 0.0;
+
+    // Dead zone eşikleri (0.05 = ~5% hayalet hareketi engeller)
+    private static final double AM_DEADZONE_XY = 0.08;
+    private static final double AM_DEADZONE_Z = 0.05;
+
+    // Minimum hareket eşiği (gerçek hareket için)
+    private static final double AM_MIN_THRESHOLD = 0.15;
 
     // Tıklama geciktirici (Debounce/Anti-Double Click)
     private Timer clickTimer = new Timer();
@@ -490,5 +514,52 @@ public class RobotMouseHandler {
         } catch (Exception e) {
             System.err.println("Failed to execute paste: " + e.getMessage());
         }
+    }
+
+    public synchronized void handleAmMode(AMModeEvent event) {
+        this.amModeEnabled = event.isEnabled();
+    }
+
+    public synchronized void handleAmSens(AMSensEvent event) {
+        this.amSensitivity = event.getValue();
+    }
+
+    public synchronized void handleAmMove(AMMoveEvent event) {
+        if (!amModeEnabled || robot == null)
+            return;
+
+        double rawX = event.getX();
+        double rawY = event.getY();
+        double rawZ = event.getZ();
+
+        filteredX = filteredX + AM_FILTER_ALPHA * (rawX - filteredX);
+        filteredY = filteredY + AM_FILTER_ALPHA * (rawY - filteredY);
+        filteredZ = filteredZ + AM_FILTER_ALPHA * (rawZ - filteredZ);
+
+        double appliedX = applyDeadzone(filteredX, AM_DEADZONE_XY);
+        double appliedY = applyDeadzone(filteredY, AM_DEADZONE_XY);
+        double appliedZ = applyDeadzone(filteredZ, AM_DEADZONE_Z);
+
+        double magnitude = Math.sqrt(appliedX * appliedX + appliedY * appliedY);
+        if (magnitude < AM_MIN_THRESHOLD) {
+            return;
+        }
+
+        double basePointerSpeed = appConfig.getPointerSpeed();
+
+        vx += appliedX * amSensitivity * AM_MOVEMENT_SCALE * basePointerSpeed;
+        vy += appliedY * amSensitivity * AM_MOVEMENT_SCALE * basePointerSpeed;
+
+        if (Math.abs(appliedZ) > 0.01) {
+            scrollV += appliedZ * amSensitivity * AM_SCROLL_SCALE * appConfig.getScrollSpeed();
+        }
+    }
+
+    private double applyDeadzone(double value, double deadzone) {
+        if (Math.abs(value) < deadzone) {
+            return 0.0;
+        }
+        double sign = value > 0 ? 1.0 : -1.0;
+        return sign * (Math.abs(value) - deadzone) / (1.0 - deadzone);
     }
 }

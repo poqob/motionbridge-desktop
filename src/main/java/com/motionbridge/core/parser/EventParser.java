@@ -53,6 +53,12 @@ public class EventParser {
                     return gson.fromJson(jsonObject, CopyEvent.class);
                 case "PASTE":
                     return gson.fromJson(jsonObject, PasteEvent.class);
+                case "AM_MODE":
+                    return gson.fromJson(jsonObject, AMModeEvent.class);
+                case "AM_SENS":
+                    return gson.fromJson(jsonObject, AMSensEvent.class);
+                case "AM_M":
+                    return gson.fromJson(jsonObject, AMMoveEvent.class);
                 default:
                     return null;
             }

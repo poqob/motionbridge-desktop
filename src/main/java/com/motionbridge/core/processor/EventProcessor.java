@@ -93,6 +93,12 @@ public class EventProcessor implements Runnable {
             mouseHandler.handleCopy((CopyEvent) event);
         } else if (event instanceof PasteEvent) {
             mouseHandler.handlePaste((PasteEvent) event);
+        } else if (event instanceof AMModeEvent) {
+            mouseHandler.handleAmMode((AMModeEvent) event);
+        } else if (event instanceof AMSensEvent) {
+            mouseHandler.handleAmSens((AMSensEvent) event);
+        } else if (event instanceof AMMoveEvent) {
+            mouseHandler.handleAmMove((AMMoveEvent) event);
         }
     }
 }
